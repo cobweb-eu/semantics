@@ -1,0 +1,79 @@
+# baseURI: http://prophet.ucd.ie/ontology/cobweb/properties
+
+@prefix :        <http://prophet.ucd.ie/ontology/cobweb/properties#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://prophet.ucd.ie/ontology/cobweb/properties>
+      rdf:type owl:Ontology ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+:azimuth
+      rdf:type rdf:Property .
+
+:cam_hoz
+      rdf:type rdf:Property .
+
+:cam_vert
+      rdf:type rdf:Property .
+
+:comp_bar
+      rdf:type rdf:Property .
+
+:dev_os
+      rdf:type rdf:Property .
+
+:editor
+      rdf:type rdf:Property .
+
+:fields
+      rdf:type rdf:Property .
+
+:identifier
+      rdf:type rdf:Property .
+
+:makemodel
+      rdf:type rdf:Property .
+
+:name
+      rdf:type rdf:Property ;
+      owl:equivalentProperty
+              <http://xmlns.com/foaf/0.1/name> .
+
+:osversion
+      rdf:type rdf:Property .
+
+:pitch
+      rdf:type rdf:Property .
+
+:pos_acc
+      rdf:type rdf:Property .
+
+:pos_sat
+      rdf:type rdf:Property .
+
+:pos_tech
+      rdf:type rdf:Property .
+
+:press
+      rdf:type rdf:Property .
+
+:query
+      rdf:type rdf:Property .
+
+:response
+      rdf:type rdf:Property .
+
+:roll
+      rdf:type rdf:Property .
+
+:temp
+      rdf:type rdf:Property .
+
+:timestamp
+      rdf:type rdf:Property .
+
+:title
+      rdf:type rdf:Property .

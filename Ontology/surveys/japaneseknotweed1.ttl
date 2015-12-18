@@ -1,0 +1,36 @@
+# baseURI: http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1
+# imports: http://prophet.ucd.ie/ontology/cobweb/dwc
+# imports: http://prophet.ucd.ie/ontology/cobweb/survey
+
+@prefix :        <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1#> .
+@prefix cobweb:  <http://prophet.ucd.ie/ontology/cobweb/security#> .
+@prefix dwc:     <http://prophet.ucd.ie/ontology/cobweb/dwc#> .
+@prefix map:     <http://prophet.ucd.ie/ontology/cobweb/map#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix survey:  <http://prophet.ucd.ie/ontology/cobweb/survey#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+survey:fieldcontain-image-1
+      rdf:type survey:Question ;
+      survey:hasMapping dwc:AssociatedMedia .
+
+survey:fieldcontain-radio-1
+      rdf:type survey:Question ;
+      survey:hasMapping dwc:ScientificNameID , dwc:Kingdom , dwc:VernacularName , dwc:ScientificName , dwc:Family .
+
+survey:fieldcontain-radio-2
+      rdf:type survey:Question .
+
+survey:fieldcontain-select-1
+      rdf:type survey:Question .
+
+survey:fieldcontain-select-2
+      rdf:type survey:Question ;
+      survey:hasMapping dwc:Habitat .
+
+<http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1>
+      rdf:type owl:Ontology ;
+      owl:imports <http://prophet.ucd.ie/ontology/cobweb/dwc> , <http://prophet.ucd.ie/ontology/cobweb/survey> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .

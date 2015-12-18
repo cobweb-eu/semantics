@@ -1,0 +1,13 @@
+{
+    "geojson": "http://prophet.ucd.ie/ontology/cobweb/geojson#",
+    "fullgeojson" : "http://geojson.org/geojson-spec.html#",
+    "cobweb" : "http://prophet.ucd.ie/ontology/cobweb/properties#",
+    "type":"@type",
+    "Point": "geojson:Point",
+    "Feature": "geojson:Feature",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "geometry": "geojson:geometry-objects",
+    "coordinates": {"@id": "geojson:positions", "@container" : "@list"},
+    "features": { "@id": "geojson:features", "@container": "@list"},
+    "properties": "geojson:properties"
+}

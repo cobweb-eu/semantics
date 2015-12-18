@@ -1,0 +1,85 @@
+# baseURI: http://prophet.ucd.ie/ontology/cobweb/dwc
+# imports: http://prophet.ucd.ie/ontology/cobweb/geojson
+# imports: http://prophet.ucd.ie/ontology/cobweb/map
+# imports: http://prophet.ucd.ie/ontology/cobweb/properties
+
+@prefix :        <http://prophet.ucd.ie/ontology/cobweb/dwc#> .
+@prefix geojson:  <http://prophet.ucd.ie/ontology/cobweb/geojson#> .
+@prefix map:     <http://prophet.ucd.ie/ontology/cobweb/map#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix properties:  <http://prophet.ucd.ie/ontology/cobweb/properties#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://prophet.ucd.ie/ontology/cobweb/dwc>
+      rdf:type owl:Ontology ;
+      owl:imports <http://prophet.ucd.ie/ontology/cobweb/map> , <http://prophet.ucd.ie/ontology/cobweb/properties> , <http://prophet.ucd.ie/ontology/cobweb/geojson> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+:AssociatedMedia
+      rdf:type map:Mapping ;
+      map:hasTransformation
+              "imagebase appended."^^xsd:string ;
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "dwc:associatedMedia"^^xsd:string .
+
+:Coordinates
+      rdf:type map:Mapping ;
+      map:mapType "darwincore"^^xsd:string .
+
+:DatasetID
+      rdf:type map:Mapping ;
+      map:hasTransformation
+              "<<>><<>>append string, substitue string etc<<>><<>>"^^xsd:string ;
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "dwc:datasetID"^^xsd:string .
+
+:Family
+      rdf:type map:ValueMap ;
+      map:forValue "Japanese Knotweed"^^xsd:string ;
+      map:mapType "darwincore"^^xsd:string ;
+      map:mappedValue "Fallopia"^^xsd:string ;
+      map:mapsToElement "dwc:family"^^xsd:string .
+
+:Habitat
+      rdf:type map:Mapping ;
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "darwincore"^^xsd:string .
+
+:Kingdom
+      rdf:type map:ValueMap ;
+      map:mapType "darwincore"^^xsd:string .
+
+:ScientificName
+      rdf:type map:ValueMap ;
+      map:mapType "darwincore"^^xsd:string .
+
+:ScientificNameID
+      rdf:type map:ValueMap ;
+      map:mapType "darwincore"^^xsd:string .
+
+:Timestamp
+      rdf:type map:Mapping ;
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "dwc:Eventdate"^^xsd:string .
+
+:VernacularName
+      rdf:type map:ValueMap ;
+      map:mapType "darwincore"^^xsd:string .
+
+geojson:coordinates
+      map:hasMapping :Coordinates .
+
+map:mappedValue
+      rdfs:subPropertyOf map:hasTransformation .
+
+map:mapsToElement
+      rdfs:domain map:Mapping ;
+      rdfs:range xsd:string .
+
+properties:editor
+      map:hasMapping :DatasetID .
+
+properties:timestamp
+      map:hasMapping :Timestamp .

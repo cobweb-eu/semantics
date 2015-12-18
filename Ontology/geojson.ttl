@@ -1,0 +1,44 @@
+# baseURI: http://prophet.ucd.ie/ontology/cobweb/geojson
+
+@prefix :        <http://prophet.ucd.ie/ontology/cobweb/geojson#> .
+@prefix geojson:  <http://geojson.org/geojson-spec.html#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+geojson:feature
+      rdf:type owl:Class ;
+      rdfs:subClassOf owl:Thing ;
+      owl:equivalentClass :Feature .
+
+geojson:point
+      rdf:type owl:Class ;
+      rdfs:subClassOf owl:Thing ;
+      owl:equivalentClass :Point .
+
+<http://prophet.ucd.ie/ontology/cobweb/geojson>
+      rdf:type owl:Ontology ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+:Feature
+      rdf:type owl:Class ;
+      rdfs:subClassOf owl:Thing ;
+      owl:equivalentClass geojson:feature .
+
+:Point
+      rdf:type owl:Class ;
+      rdfs:subClassOf owl:Thing ;
+      owl:equivalentClass geojson:point .
+
+:coordinates
+      rdf:type rdf:Property ;
+      rdfs:seeAlso geojson:positions .
+
+:geometry
+      rdf:type rdf:Property ;
+      rdfs:seeAlso geojson:geometry-objects .
+
+:properties
+      rdf:type rdf:Property ;
+      rdfs:seeAlso geojson:feature-objects .

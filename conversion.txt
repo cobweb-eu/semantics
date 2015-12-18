@@ -1,0 +1,8 @@
+
+RDFlib for python and the json-ld extension.
+
+https://github.com/RDFLib/rdflib
+https://github.com/RDFLib/rdflib-jsonld
+
+pip install rdflib
+pip install rdflib-jsonld
