@@ -1,0 +1,286 @@
+[
+  {
+    "@graph": [
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Habitat",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#Mapping"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
+          {
+            "@value": "dwc:Habitat"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Family",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#ValueMap"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#forValue": [
+          {
+            "@value": "Japanese Knotweed"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mappedValue": [
+          {
+            "@value": "Fallopia"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
+          {
+            "@value": "dwc:family"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement",
+        "http://www.w3.org/2000/01/rdf-schema#domain": [
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/map#Mapping"
+          }
+        ],
+        "http://www.w3.org/2000/01/rdf-schema#range": [
+          {
+            "@id": "http://www.w3.org/2001/XMLSchema#string"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc",
+        "@type": [
+          "http://www.w3.org/2002/07/owl#Ontology"
+        ],
+        "http://www.w3.org/2002/07/owl#imports": [
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/properties"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/geojson"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/map"
+          }
+        ],
+        "http://www.w3.org/2002/07/owl#versionInfo": [
+          {
+            "@value": "Created with TopBraid Composer"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#AssociatedMediaName",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#Mapping"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
+          {
+            "@value": "dwc:associatedMediaName"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#ExampleConstant",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#Constant"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#key": [
+          {
+            "@value": "darwincore.example"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#value": [
+          {
+            "@value": "constantvalue"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Coordinates",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#Mapping"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#DarwinCore",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#Configuration"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mappings": [
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#ScientificName"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Kingdom"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#ScientificNameID"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#AssociatedMedia"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Timestamp"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Coordinates"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#VernacularName"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Family"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#DatasetID"
+          },
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Habitat"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#templateFile": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "@value": "http://prophet.ucd.ie/ontology/cobweb/mapping/darwincore.ftl"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#type": [
+          {
+            "@value": "darwincore"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Timestamp",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#Mapping"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
+          {
+            "@value": "dwc:Eventdate"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#AssociatedMedia",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#Mapping"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#hasTransformation": [
+          {
+            "@value": "imagebase appended."
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
+          {
+            "@value": "dwc:associatedMedia"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#VernacularName",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#ValueMap"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#ScientificName",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#ValueMap"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/map#mappedValue",
+        "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+          {
+            "@id": "http://prophet.ucd.ie/ontology/cobweb/map#hasTransformation"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#ScientificNameID",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#ValueMap"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#Kingdom",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#ValueMap"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ]
+      },
+      {
+        "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc#DatasetID",
+        "@type": [
+          "http://prophet.ucd.ie/ontology/cobweb/map#Mapping"
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#hasTransformation": [
+          {
+            "@value": "<<>><<>>append string, substitue string etc<<>><<>>"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapType": [
+          {
+            "@value": "darwincore"
+          }
+        ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
+          {
+            "@value": "dwc:datasetID"
+          }
+        ]
+      }
+    ],
+    "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc"
+  }
+]

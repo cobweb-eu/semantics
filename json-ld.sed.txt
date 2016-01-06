@@ -1,0 +1,8 @@
+# "@id": "file:///C:/Users/Trget/Desktop/COBWEB/Semantics/Ontology/dwc.ttl"
+# "@id": "file:\/\/\/C:\/Users\/Trget\/Desktop\/COBWEB\/Semantics\/Ontology\/dwc\.ttl"
+
+# "@id": "http://prophet.ucd.ie/ontology/cobweb/dwc.ttl"
+# "@id": "http:\/\/prophet.ucd.ie\/ontology\/cobweb/dwc"
+
+# s/"@id": "file:\/\/\/C:\/Users\/Trget\/Desktop\/COBWEB\/Semantics\/Ontology\/dwc\.ttl"/"@id": "http:\/\/prophet.ucd.ie\/ontology\/cobweb\/dwc"/
+s/"@id": "file:\/\/\/C:\/Users\/Trget\/Desktop\/COBWEB\/Semantics\/Ontology\/\(.*\)\.ttl"/"@id": "http:\/\/prophet.ucd.ie\/ontology\/cobweb\/\1"/

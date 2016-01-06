@@ -14,7 +14,7 @@
 
 <http://prophet.ucd.ie/ontology/cobweb/dwc>
       rdf:type owl:Ontology ;
-      owl:imports <http://prophet.ucd.ie/ontology/cobweb/map> , <http://prophet.ucd.ie/ontology/cobweb/properties> , <http://prophet.ucd.ie/ontology/cobweb/geojson> ;
+      owl:imports <http://prophet.ucd.ie/ontology/cobweb/geojson> , <http://prophet.ucd.ie/ontology/cobweb/properties> , <http://prophet.ucd.ie/ontology/cobweb/map> ;
       owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
 
 :AssociatedMedia
@@ -24,9 +24,20 @@
       map:mapType "darwincore"^^xsd:string ;
       map:mapsToElement "dwc:associatedMedia"^^xsd:string .
 
+:AssociatedMediaName
+      rdf:type map:Mapping ;
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "dwc:associatedMediaName"^^xsd:string .
+
 :Coordinates
       rdf:type map:Mapping ;
       map:mapType "darwincore"^^xsd:string .
+
+:DarwinCore
+      rdf:type map:Configuration ;
+      map:mappings :Family , :DatasetID , :Habitat , :Coordinates , :Kingdom , :ScientificName , :VernacularName , :ScientificNameID , :AssociatedMedia , :Timestamp ;
+      map:templateFile "http://prophet.ucd.ie/ontology/cobweb/mapping/darwincore.ftl"^^xsd:anyURI ;
+      map:type "darwincore"^^xsd:string .
 
 :DatasetID
       rdf:type map:Mapping ;
@@ -34,6 +45,11 @@
               "<<>><<>>append string, substitue string etc<<>><<>>"^^xsd:string ;
       map:mapType "darwincore"^^xsd:string ;
       map:mapsToElement "dwc:datasetID"^^xsd:string .
+
+:ExampleConstant
+      rdf:type map:Constant ;
+      map:key "darwincore.example"^^xsd:string ;
+      map:value "constantvalue"^^xsd:string .
 
 :Family
       rdf:type map:ValueMap ;
@@ -45,7 +61,7 @@
 :Habitat
       rdf:type map:Mapping ;
       map:mapType "darwincore"^^xsd:string ;
-      map:mapsToElement "darwincore"^^xsd:string .
+      map:mapsToElement "dwc:Habitat"^^xsd:string .
 
 :Kingdom
       rdf:type map:ValueMap ;
@@ -68,18 +84,9 @@
       rdf:type map:ValueMap ;
       map:mapType "darwincore"^^xsd:string .
 
-geojson:coordinates
-      map:hasMapping :Coordinates .
-
 map:mappedValue
       rdfs:subPropertyOf map:hasTransformation .
 
 map:mapsToElement
       rdfs:domain map:Mapping ;
       rdfs:range xsd:string .
-
-properties:editor
-      map:hasMapping :DatasetID .
-
-properties:timestamp
-      map:hasMapping :Timestamp .

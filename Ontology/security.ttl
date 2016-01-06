@@ -8,3 +8,43 @@
 
 :     rdf:type owl:Ontology ;
       owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+:MappedSecurityProfile
+      rdf:type rdfs:Class ;
+      rdfs:subClassOf :SecurityProfile .
+
+:Private
+      rdf:type :SecurityProfile .
+
+:Public
+      rdf:type :SecurityProfile .
+
+:Question
+      rdf:type :Scope .
+
+:Restricted
+      rdf:type :SecurityProfile .
+
+:Scope
+      rdf:type rdfs:Class .
+
+:SecurityProfile
+      rdf:type rdfs:Class .
+
+:Survey
+      rdf:type :Scope .
+
+:forValue
+      rdf:type rdf:Property ;
+      rdfs:domain :MappedSecurityProfile ;
+      rdfs:range xsd:string .
+
+:hasProfile
+      rdf:type rdf:Property ;
+      rdfs:domain :MappedSecurityProfile ;
+      rdfs:range :SecurityProfile .
+
+:hasScope
+      rdf:type rdf:Property ;
+      rdfs:domain :SecurityProfile ;
+      rdfs:range :Scope .

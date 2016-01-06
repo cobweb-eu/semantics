@@ -3,34 +3,74 @@
 # imports: http://prophet.ucd.ie/ontology/cobweb/survey
 
 @prefix :        <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1#> .
-@prefix cobweb:  <http://prophet.ucd.ie/ontology/cobweb/security#> .
 @prefix dwc:     <http://prophet.ucd.ie/ontology/cobweb/dwc#> .
 @prefix map:     <http://prophet.ucd.ie/ontology/cobweb/map#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ssp:     <http://prophet.ucd.ie/ontology/cobweb/security#> .
 @prefix survey:  <http://prophet.ucd.ie/ontology/cobweb/survey#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-survey:fieldcontain-image-1
-      rdf:type survey:Question ;
-      survey:hasMapping dwc:AssociatedMedia .
+dwc:DarwinCore
+      map:mappings :Mapping_1 .
 
-survey:fieldcontain-radio-1
+<http://prophet.ucd.ie/ontology/cobweb/properties#name>
       rdf:type survey:Question ;
-      survey:hasMapping dwc:ScientificNameID , dwc:Kingdom , dwc:VernacularName , dwc:ScientificName , dwc:Family .
+      survey:hasMapping dwc:AssociatedMediaName ;
+      survey:hasSecurityProfile
+              ssp:Private .
 
-survey:fieldcontain-radio-2
+<http://prophet.ucd.ie/ontology/cobweb/properties#timestamp>
+      rdf:type survey:Question ;
+      survey:hasMapping dwc:Timestamp .
+
+<http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1>
+      rdf:type owl:Ontology , survey:Survey ;
+      survey:hasQualityProfile
+              "file://example_quality_document.xpdl"^^xsd:anyURI ;
+      owl:imports <http://prophet.ucd.ie/ontology/cobweb/survey> , <http://prophet.ucd.ie/ontology/cobweb/dwc> ;
+      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+
+:Mapping_1
+      rdf:type map:Mapping ;
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "null"^^xsd:string .
+
+:NonSensitiveSpecies
+      rdf:type ssp:MappedSecurityProfile ;
+      ssp:forValue "Japanese Knotweed"^^xsd:string ;
+      ssp:hasProfile ssp:Public ;
+      ssp:hasScope ssp:Survey .
+
+:SensitiveSpecies
+      rdf:type ssp:MappedSecurityProfile ;
+      ssp:forValue "Fen Orchid"^^xsd:string ;
+      ssp:hasProfile ssp:Restricted ;
+      ssp:hasScope "ssp:Survey"^^xsd:string .
+
+:fieldcontain-image-1
+      rdf:type survey:Question ;
+      survey:hasMapping dwc:AssociatedMedia , :Mapping_1 .
+
+:fieldcontain-radio-1
+      rdf:type survey:Question ;
+      survey:hasMapping dwc:ScientificNameID , dwc:Kingdom , dwc:VernacularName , dwc:ScientificName , dwc:Family ;
+      survey:hasSecurityProfile
+              :NonSensitiveSpecies , :SensitiveSpecies .
+
+:fieldcontain-radio-2
       rdf:type survey:Question .
 
-survey:fieldcontain-select-1
+:fieldcontain-select-1
       rdf:type survey:Question .
 
-survey:fieldcontain-select-2
+:fieldcontain-select-2
       rdf:type survey:Question ;
       survey:hasMapping dwc:Habitat .
 
-<http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1>
-      rdf:type owl:Ontology ;
-      owl:imports <http://prophet.ucd.ie/ontology/cobweb/dwc> , <http://prophet.ucd.ie/ontology/cobweb/survey> ;
-      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+:urlprefix
+      rdf:type map:Constant ;
+      map:key "dwc:associatedMediaPrefix"^^xsd:string ;
+      map:mapType "darwincore"^^xsd:string ;
+      map:value "https://dyfi.cobwebproject.eu/pcapi/fs/local/2338e388-f34e-25d9-945c-54cffd9c46c2/records/"^^xsd:string .

@@ -6,6 +6,12 @@
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
+:Configuration
+      rdf:type rdfs:Class .
+
+:Constant
+      rdf:type rdfs:Class .
+
 :Mapping
       rdf:type rdfs:Class .
 
@@ -17,13 +23,13 @@
       rdf:type rdf:Property ;
       rdfs:domain :ValueMap .
 
-:hasMapping
-      rdf:type rdf:Property ;
-      rdfs:range :Mapping .
-
 :hasTransformation
       rdf:type rdf:Property ;
       rdfs:domain :Mapping ;
+      rdfs:range xsd:string .
+
+:key  rdf:type rdf:Property ;
+      rdfs:domain :Constant ;
       rdfs:range xsd:string .
 
 :mapType
@@ -35,8 +41,28 @@
       rdf:type rdf:Property ;
       rdfs:domain :ValueMap .
 
+:mappings
+      rdf:type rdf:Property ;
+      rdfs:domain :Configuration ;
+      rdfs:range :Constant , :Mapping .
+
 :mapsToElement
       rdf:type rdf:Property .
+
+:templateFile
+      rdf:type rdf:Property ;
+      rdfs:domain :Configuration ;
+      rdfs:range xsd:anyURI .
+
+:type
+      rdf:type rdf:Property ;
+      rdfs:domain :Configuration ;
+      rdfs:range xsd:string .
+
+:value
+      rdf:type rdf:Property ;
+      rdfs:domain :Constant ;
+      rdfs:range xsd:string .
 
 <http://prophet.ucd.ie/ontology/cobweb/security#map>
       rdf:type owl:Ontology ;

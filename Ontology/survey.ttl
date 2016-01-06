@@ -5,23 +5,36 @@
 # imports: http://prophet.ucd.ie/ontology/cobweb/security
 
 @prefix :        <http://prophet.ucd.ie/ontology/cobweb/survey#> .
-@prefix cobweb:  <http://prophet.ucd.ie/ontology/cobweb/security#> .
 @prefix geojson:  <http://prophet.ucd.ie/ontology/cobweb/geojson#> .
 @prefix map:     <http://prophet.ucd.ie/ontology/cobweb/map#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix properties:  <http://prophet.ucd.ie/ontology/cobweb/properties#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ssp:     <http://prophet.ucd.ie/ontology/cobweb/security#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 <http://prophet.ucd.ie/ontology/cobweb/survey>
       rdf:type owl:Ontology ;
-      owl:imports <http://prophet.ucd.ie/ontology/cobweb/geojson> , <http://prophet.ucd.ie/ontology/cobweb/properties> , <http://prophet.ucd.ie/ontology/cobweb/map> , <http://prophet.ucd.ie/ontology/cobweb/security> ;
+      owl:imports <http://prophet.ucd.ie/ontology/cobweb/security> , <http://prophet.ucd.ie/ontology/cobweb/map> , <http://prophet.ucd.ie/ontology/cobweb/properties> , <http://prophet.ucd.ie/ontology/cobweb/geojson> ;
       owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
 
 :Question
       rdf:type rdfs:Class .
 
+:Survey
+      rdf:type rdfs:Class .
+
 :hasMapping
       rdf:type rdf:Property ;
       rdfs:range map:Mapping .
+
+:hasQualityProfile
+      rdf:type rdf:Property ;
+      rdfs:domain :Survey , :Question ;
+      rdfs:range xsd:anyURI .
+
+:hasSecurityProfile
+      rdf:type rdf:Property ;
+      rdfs:domain :Survey , :Question ;
+      rdfs:range ssp:SecurityProfile .
