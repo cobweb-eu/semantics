@@ -5,6 +5,11 @@ import ie.ucd.cobweb.semantic.jsonld.Context;
 import ie.ucd.cobweb.semantic.mapping.Ontology;
 
 import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,12 +27,14 @@ public class SurveyData {
 	private Map<String, Property> properties;
 	private String name;
 	private Geometry geometry;
+	private byte[] fingerprint;
 
 	public SurveyData(JsonObject data, Context context, Ontology ontology)
 			throws FileNotFoundException {
 		this.data = data;
 		this.context = context;
 		this.properties = new HashMap<String, Property>();
+		this.fingerprint = null;
 
 		JsonArray cta = data.getAsJsonArray("@context");
 		base = extractBase(cta);
@@ -71,12 +78,15 @@ public class SurveyData {
 
 	private void loadFields(JsonArray fields) {
 		properties.remove("fields");
+		ArrayList<String> fields_temp = new ArrayList<>();
+
 		for (JsonElement el : fields) {
 			if (el.isJsonObject()) {
 				JsonObject resp = el.getAsJsonObject();
 				JsonElement type = resp.getAsJsonPrimitive("@type");
 				JsonElement id = resp.getAsJsonPrimitive("id");
 				JsonElement val = resp.getAsJsonPrimitive("val");
+				JsonElement label = resp.getAsJsonPrimitive("label");
 
 				if (type == null) {
 					type = id;
@@ -84,15 +94,40 @@ public class SurveyData {
 							"Response '%s' has no type specified.",
 							id.getAsString()));
 				}
+				String ts = type.getAsString();
+				String lbl = label.getAsString();
 
-				String ts = base + type.getAsString();
+				fields_temp.add(ts + lbl);
+
+				ts = base + ts;
 				String vs = val.getAsString();
 				properties.put(ts, new Property(ts, vs));
 			}
 		}
+
+		String[] fingers = fields_temp.toArray(new String[] {});
+		Arrays.sort(fingers);
+
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			for (String finger : fingers) {
+				md.update(finger.getBytes("UTF-8"));
+			}
+			fingerprint = md.digest();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public byte[] getFingerprint() {
+		return fingerprint;
 	}
 
 	private static String extractBase(JsonArray context) {
+		if( context==null)
+			return null;
 		for (JsonElement el : context) {
 			if (el.isJsonObject()) {
 				JsonObject spec = el.getAsJsonObject();

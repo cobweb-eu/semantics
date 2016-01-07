@@ -1,6 +1,7 @@
 @echo off
 
 mkdir www\surveys
+mkdir www\context
 
 REM for /R Ontology --ns= %%f in (*.ttl) do (
 REM     echo %%~nf
@@ -34,6 +35,8 @@ REM    echo www\surveys\%%~nf
 popd
 del /Q temp\*
 rmdir temp
+
+copy Ontology\context\* www\context\
 
 REM 
 
