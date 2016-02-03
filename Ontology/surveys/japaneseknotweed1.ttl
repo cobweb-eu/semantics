@@ -8,6 +8,7 @@
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spin:    <http://spinrdf.org/spin#> .
 @prefix ssp:     <http://prophet.ucd.ie/ontology/cobweb/security#> .
 @prefix survey:  <http://prophet.ucd.ie/ontology/cobweb/survey#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
@@ -15,22 +16,35 @@
 dwc:DarwinCore
       map:mappings :Mapping_1 .
 
+map:Constant
+      rdfs:subClassOf map:Mapping .
+
+map:mapType
+      rdfs:domain map:Mapping .
+
 <http://prophet.ucd.ie/ontology/cobweb/properties#name>
       rdf:type survey:Question ;
+      map:hasMapping dwc:AssociatedMediaName ;
+      ssp:hasSecurityProfile
+              ssp:Private ;
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> ;
       survey:hasMapping dwc:AssociatedMediaName ;
       survey:hasSecurityProfile
               ssp:Private .
 
 <http://prophet.ucd.ie/ontology/cobweb/properties#timestamp>
       rdf:type survey:Question ;
+      map:hasMapping dwc:Timestamp ;
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> ;
       survey:hasMapping dwc:Timestamp .
 
 <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1>
-      rdf:type owl:Ontology , survey:Survey ;
+      rdf:type survey:Survey , owl:Ontology ;
       survey:hasQualityProfile
               "file://example_quality_document.xpdl"^^xsd:anyURI ;
-      owl:imports <http://prophet.ucd.ie/ontology/cobweb/survey> , <http://prophet.ucd.ie/ontology/cobweb/dwc> ;
-      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+      survey:hasQuestion :fieldcontain-select-2 , :fieldcontain-radio-1 , <http://prophet.ucd.ie/ontology/cobweb/properties#timestamp> , <http://prophet.ucd.ie/ontology/cobweb/properties#name> , :fieldcontain-image-1 , :fieldcontain-select-1 , :fieldcontain-radio-2 ;
+      owl:imports <http://prophet.ucd.ie/ontology/cobweb/dwc> , <http://prophet.ucd.ie/ontology/cobweb/survey> ;
+      owl:versionInfo "Created with TopBraid Composer."^^xsd:string , "Draft version, subjet to change without notice."^^xsd:string .
 
 :Mapping_1
       rdf:type map:Mapping ;
@@ -51,22 +65,32 @@ dwc:DarwinCore
 
 :fieldcontain-image-1
       rdf:type survey:Question ;
-      survey:hasMapping dwc:AssociatedMedia , :Mapping_1 .
+      map:hasMapping dwc:AssociatedMedia , :Mapping_1 ;
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> ;
+      survey:hasMapping :Mapping_1 , dwc:AssociatedMedia .
 
 :fieldcontain-radio-1
       rdf:type survey:Question ;
-      survey:hasMapping dwc:ScientificNameID , dwc:Kingdom , dwc:VernacularName , dwc:ScientificName , dwc:Family ;
+      map:hasMapping dwc:Family , dwc:ScientificNameID , dwc:Kingdom , dwc:ScientificName , dwc:VernacularName ;
+      ssp:hasSecurityProfile
+              :NonSensitiveSpecies , :SensitiveSpecies ;
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> ;
+      survey:hasMapping dwc:ScientificName , dwc:Family , dwc:ScientificNameID , dwc:Kingdom , dwc:VernacularName ;
       survey:hasSecurityProfile
-              :NonSensitiveSpecies , :SensitiveSpecies .
+              :SensitiveSpecies , :NonSensitiveSpecies .
 
 :fieldcontain-radio-2
-      rdf:type survey:Question .
+      rdf:type survey:Question ;
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> .
 
 :fieldcontain-select-1
-      rdf:type survey:Question .
+      rdf:type survey:Question ;
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> .
 
 :fieldcontain-select-2
       rdf:type survey:Question ;
+      map:hasMapping dwc:Habitat ;
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> ;
       survey:hasMapping dwc:Habitat .
 
 :urlprefix

@@ -16,8 +16,8 @@
 
 <http://prophet.ucd.ie/ontology/cobweb/survey>
       rdf:type owl:Ontology ;
-      owl:imports <http://prophet.ucd.ie/ontology/cobweb/security> , <http://prophet.ucd.ie/ontology/cobweb/map> , <http://prophet.ucd.ie/ontology/cobweb/properties> , <http://prophet.ucd.ie/ontology/cobweb/geojson> ;
-      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
+      owl:imports <http://prophet.ucd.ie/ontology/cobweb/geojson> , <http://prophet.ucd.ie/ontology/cobweb/properties> , <http://prophet.ucd.ie/ontology/cobweb/map> , <http://prophet.ucd.ie/ontology/cobweb/security> ;
+      owl:versionInfo "Draft version, subjet to change without notice. "^^xsd:string , "Created with TopBraid Composer"^^xsd:string .
 
 :Question
       rdf:type rdfs:Class .
@@ -25,16 +25,27 @@
 :Survey
       rdf:type rdfs:Class .
 
+:appliesTo
+      rdf:type rdf:Property .
+
 :hasMapping
       rdf:type rdf:Property ;
-      rdfs:range map:Mapping .
+      rdfs:range map:Mapping ;
+      owl:equivalentProperty
+              map:hasMapping .
 
 :hasQualityProfile
       rdf:type rdf:Property ;
-      rdfs:domain :Survey , :Question ;
       rdfs:range xsd:anyURI .
+
+:hasQuestion
+      rdf:type rdf:Property ;
+      rdfs:domain :Survey ;
+      rdfs:range :Question ;
+      owl:inverseOf :appliesTo .
 
 :hasSecurityProfile
       rdf:type rdf:Property ;
-      rdfs:domain :Survey , :Question ;
-      rdfs:range ssp:SecurityProfile .
+      rdfs:range ssp:SecurityProfile ;
+      owl:equivalentProperty
+              ssp:hasSecurityProfile .

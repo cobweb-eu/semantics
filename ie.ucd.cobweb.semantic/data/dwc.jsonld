@@ -13,7 +13,7 @@
         ],
         "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
           {
-            "@value": "dwc:Habitat"
+            "@value": "dwc_Habitat"
           }
         ]
       },
@@ -39,7 +39,7 @@
         ],
         "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
           {
-            "@value": "dwc:family"
+            "@value": "dwc_family"
           }
         ]
       },
@@ -90,7 +90,7 @@
         ],
         "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
           {
-            "@value": "dwc:associatedMediaName"
+            "@value": "dwc_associatedMediaName"
           }
         ]
       },
@@ -182,7 +182,7 @@
         ],
         "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
           {
-            "@value": "dwc:Eventdate"
+            "@value": "dwc_Eventdate"
           }
         ]
       },
@@ -203,7 +203,7 @@
         ],
         "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
           {
-            "@value": "dwc:associatedMedia"
+            "@value": "dwc_associatedMedia"
           }
         ]
       },
@@ -276,7 +276,7 @@
         ],
         "http://prophet.ucd.ie/ontology/cobweb/map#mapsToElement": [
           {
-            "@value": "dwc:datasetID"
+            "@value": "dwc_datasetID"
           }
         ]
       }

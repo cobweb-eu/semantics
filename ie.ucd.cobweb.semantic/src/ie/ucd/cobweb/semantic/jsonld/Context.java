@@ -1,5 +1,5 @@
 package ie.ucd.cobweb.semantic.jsonld;
-import java.io.FileNotFoundException;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -11,9 +11,11 @@ public class Context {
 	private static final String SEP = ":";
 	private Map<String, String> map;
 
-	public Context(JsonObject data) throws FileNotFoundException {
+	public Context() {
 		map = new HashMap<String, String>();
+	}
 
+	public void load(JsonObject data) {
 		for (Entry<String, JsonElement> entry : data.entrySet()) {
 			String key = entry.getKey();
 			JsonElement el = entry.getValue();
@@ -38,5 +40,4 @@ public class Context {
 	public String getType(String key) {
 		return map.get(key);
 	}
-
 }

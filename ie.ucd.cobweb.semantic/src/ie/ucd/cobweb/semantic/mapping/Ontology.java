@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import ie.ucd.cobweb.semantic.SurveyData;
 import ie.ucd.cobweb.semantic.SurveyData.Property;
+import ie.ucd.cobweb.semantic.cli.FileCache;
 import ie.ucd.cobweb.semantic.geojson.Geometry;
 import ie.ucd.cobweb.semantic.jsonld.JSON;
 import ie.ucd.cobweb.semantic.mapping.ExportType.Exporter;
@@ -85,13 +86,14 @@ public class Ontology {
 		}
 	}
 
-	public void export(SurveyData dv) {
+	public void export(SurveyData dv, FileCache cache) {
 		for (ExportType type : exports.values()) {
 			System.out.println("  Exporting " + type.name);
 
 			Exporter ex = type.new Exporter();
 			for (Property prop : dv.properties()) {
 				System.out.println("    Property " + prop.type);
+				//System.out.println(" & " + prop.value);
 				ValueConfig conf = values.get(prop.type);
 				if (conf != null && conf.mappings != null) {
 					type.export(prop, conf.mappings, ex);
@@ -101,7 +103,7 @@ public class Ontology {
 			Geometry g = dv.getGeometry();
 			g.export(ex);
 
-			ex.export();
+			ex.export(type.extension,cache.getFile(type.conf.template));
 		}
 	}
 }

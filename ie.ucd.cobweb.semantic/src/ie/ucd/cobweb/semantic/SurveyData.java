@@ -18,6 +18,7 @@ import java.util.Map.Entry;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
 public class SurveyData {
 	private JsonObject data;
@@ -83,10 +84,13 @@ public class SurveyData {
 		for (JsonElement el : fields) {
 			if (el.isJsonObject()) {
 				JsonObject resp = el.getAsJsonObject();
-				JsonElement type = resp.getAsJsonPrimitive("@type");
-				JsonElement id = resp.getAsJsonPrimitive("id");
-				JsonElement val = resp.getAsJsonPrimitive("val");
-				JsonElement label = resp.getAsJsonPrimitive("label");
+				JsonPrimitive type = resp.getAsJsonPrimitive("@type");
+				JsonPrimitive id = resp.getAsJsonPrimitive("id");
+				JsonElement val_temp = resp.get("val");
+				JsonPrimitive val = val_temp != null
+						&& val_temp.isJsonPrimitive() ? resp
+						.getAsJsonPrimitive("val") : null;
+				JsonPrimitive label = resp.getAsJsonPrimitive("label");
 
 				if (type == null) {
 					type = id;
@@ -100,7 +104,7 @@ public class SurveyData {
 				fields_temp.add(ts + lbl);
 
 				ts = base + ts;
-				String vs = val.getAsString();
+				String vs = val == null ? "" : val.getAsString();
 				properties.put(ts, new Property(ts, vs));
 			}
 		}
@@ -126,7 +130,7 @@ public class SurveyData {
 	}
 
 	private static String extractBase(JsonArray context) {
-		if( context==null)
+		if (context == null)
 			return null;
 		for (JsonElement el : context) {
 			if (el.isJsonObject()) {

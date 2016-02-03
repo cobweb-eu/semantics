@@ -14,5 +14,8 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/SemanticConverter/lib/gson-2.5-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.7.jar"/>
+	<classpathentry kind="lib" path="lib/ehcache-3.0.0.m4.jar"/>
+	<classpathentry kind="lib" path="lib/offheap-store-2.1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

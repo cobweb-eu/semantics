@@ -1,9 +1,14 @@
 package ie.ucd.cobweb.semantic.mapping;
 
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+import freemarker.template.TemplateExceptionHandler;
 import ie.ucd.cobweb.semantic.SurveyData.Property;
-import ie.ucd.cobweb.semantic.geojson.Geometry;
-import ie.ucd.cobweb.semantic.mapping.ExportType.Exporter;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -11,13 +16,29 @@ import java.util.Set;
 
 public class ExportType {
 
+	private static freemarker.template.Configuration cfg;
+
+	static {
+		cfg = new freemarker.template.Configuration(
+				freemarker.template.Configuration.VERSION_2_3_22);
+		try {
+			cfg.setDirectoryForTemplateLoading(new File("."));
+			cfg.setDefaultEncoding("UTF-8");
+			cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private Map<String, ValueMap> maps;
 	private Set<ValueConstant> constants;
-	
-	private Configuration conf;
+
+	String extension;
+	Configuration conf;
 	final String name;
 
 	public ExportType(String name) {
+		this.extension = ".xml";// TODO: lookup.
 		this.name = name;
 		this.maps = new HashMap<>();
 		this.constants = new HashSet<>();
@@ -36,7 +57,7 @@ public class ExportType {
 	}
 
 	public void export(Property prop, String[] mappings, Exporter ex) {
-		for(String mapping: mappings) {
+		for (String mapping : mappings) {
 			System.out.println("      Mapping -> " + mapping);
 			ValueMap map = this.maps.get(mapping);
 			if (map != null)
@@ -58,12 +79,33 @@ public class ExportType {
 			map.put(key, value);
 		}
 
-		public void export() {
+		public void export(String extension, String template) {
 			System.out.println();
-			
-			for(String key: map.keySet()) {
-				System.out.println(String.format("  %s - %s", key, map.get(key)));
+			String editor = "editor";// map.get("editor");
+			String id = "id";// map.get("id");
+
+			System.out.println("Exported Properties To");
+			System.out.print("  " + editor);
+			System.out.print("_" + id);
+			System.out.println(extension);
+
+			try {
+				Template temp = cfg.getTemplate(template);
+
+				Writer out = new OutputStreamWriter(System.out);
+				temp.process(map, out);
+				System.out.println();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (TemplateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+
+			// for(String key: map.keySet()) {
+			// System.out.println(String.format("  %s - %s", key,
+			// map.get(key)));
+			// }
 		}
 	}
 }

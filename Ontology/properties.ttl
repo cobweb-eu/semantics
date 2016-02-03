@@ -1,13 +1,18 @@
 # baseURI: http://prophet.ucd.ie/ontology/cobweb/properties
+# imports: http://prophet.ucd.ie/ontology/cobweb/map
+# imports: http://prophet.ucd.ie/ontology/cobweb/security
 
 @prefix :        <http://prophet.ucd.ie/ontology/cobweb/properties#> .
+@prefix map:     <http://prophet.ucd.ie/ontology/cobweb/map#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix security:  <http://prophet.ucd.ie/ontology/cobweb/security#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 <http://prophet.ucd.ie/ontology/cobweb/properties>
       rdf:type owl:Ontology ;
+      owl:imports <http://prophet.ucd.ie/ontology/cobweb/security> , <http://prophet.ucd.ie/ontology/cobweb/map> ;
       owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
 
 :azimuth
@@ -36,6 +41,9 @@
 
 :makemodel
       rdf:type rdf:Property .
+
+:mp_azimuth
+      rdf:type rdfs:Resource .
 
 :name
       rdf:type rdf:Property ;

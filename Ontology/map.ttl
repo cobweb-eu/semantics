@@ -23,10 +23,8 @@
       rdf:type rdf:Property ;
       rdfs:domain :ValueMap .
 
-:hasTransformation
-      rdf:type rdf:Property ;
-      rdfs:domain :Mapping ;
-      rdfs:range xsd:string .
+:hasMapping
+      rdf:type rdf:Property .
 
 :key  rdf:type rdf:Property ;
       rdfs:domain :Constant ;
@@ -34,17 +32,11 @@
 
 :mapType
       rdf:type rdf:Property ;
-      rdfs:domain :Mapping ;
       rdfs:range xsd:string .
-
-:mappedValue
-      rdf:type rdf:Property ;
-      rdfs:domain :ValueMap .
 
 :mappings
       rdf:type rdf:Property ;
-      rdfs:domain :Configuration ;
-      rdfs:range :Constant , :Mapping .
+      rdfs:domain :Configuration .
 
 :mapsToElement
       rdf:type rdf:Property .

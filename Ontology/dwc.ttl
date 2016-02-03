@@ -14,13 +14,11 @@
 
 <http://prophet.ucd.ie/ontology/cobweb/dwc>
       rdf:type owl:Ontology ;
-      owl:imports <http://prophet.ucd.ie/ontology/cobweb/geojson> , <http://prophet.ucd.ie/ontology/cobweb/properties> , <http://prophet.ucd.ie/ontology/cobweb/map> ;
+      owl:imports <http://prophet.ucd.ie/ontology/cobweb/map> , <http://prophet.ucd.ie/ontology/cobweb/properties> , <http://prophet.ucd.ie/ontology/cobweb/geojson> ;
       owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
 
 :AssociatedMedia
       rdf:type map:Mapping ;
-      map:hasTransformation
-              "imagebase appended."^^xsd:string ;
       map:mapType "darwincore"^^xsd:string ;
       map:mapsToElement "dwc:associatedMedia"^^xsd:string .
 
@@ -41,8 +39,6 @@
 
 :DatasetID
       rdf:type map:Mapping ;
-      map:hasTransformation
-              "<<>><<>>append string, substitue string etc<<>><<>>"^^xsd:string ;
       map:mapType "darwincore"^^xsd:string ;
       map:mapsToElement "dwc:datasetID"^^xsd:string .
 
@@ -55,7 +51,6 @@
       rdf:type map:ValueMap ;
       map:forValue "Japanese Knotweed"^^xsd:string ;
       map:mapType "darwincore"^^xsd:string ;
-      map:mappedValue "Fallopia"^^xsd:string ;
       map:mapsToElement "dwc:family"^^xsd:string .
 
 :Habitat
@@ -83,9 +78,6 @@
 :VernacularName
       rdf:type map:ValueMap ;
       map:mapType "darwincore"^^xsd:string .
-
-map:mappedValue
-      rdfs:subPropertyOf map:hasTransformation .
 
 map:mapsToElement
       rdfs:domain map:Mapping ;
