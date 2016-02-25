@@ -6,11 +6,12 @@ import com.google.gson.JsonObject;
 
 public class Configuration {
 
-	static final String TEMPLATE = "http://prophet.ucd.ie/ontology/cobweb/map#templateFile";
-	static final String TYPE = "http://prophet.ucd.ie/ontology/cobweb/map#type";
+	public static final String TEMPLATE = "http://prophet.ucd.ie/ontology/cobweb/map#templateFile";
+	public static final String TEMPLATE_COLLECTION = "http://prophet.ucd.ie/ontology/cobweb/map#templateCollection";
+	public static final String TYPE = "http://prophet.ucd.ie/ontology/cobweb/map#type";
 
-	final String template;
-	final String type;
+	public final String template;
+	public final String type;
 
 	public Configuration(String filename, String type) {
 		this.template = filename;
@@ -18,9 +19,9 @@ public class Configuration {
 	}
 
 	public static Configuration extract(JsonObject spec) {
-		String filename = JSON.extractArrayElement(TEMPLATE,"@value",spec);
+		String filename = JSON.extractArrayElement(TEMPLATE, "@value", spec);
 
-		String type = JSON.extractArrayElement(TYPE,"@value",spec);
+		String type = JSON.extractArrayElement(TYPE, "@value", spec);
 
 		return new Configuration(filename, type);
 	}

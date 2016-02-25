@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
 public class JSON {
-	
-	public static String extractArrayElement(String key, String element, JsonObject spec) {
+
+	public static String extractArrayElement(String key, String element,
+			JsonObject spec) {
 		JsonArray arr = spec.getAsJsonArray(key);
 		if (arr == null)
 			return null;
@@ -48,5 +50,12 @@ public class JSON {
 
 	public static final String ID = "@id";
 	public static final String VALUE = "@value";
+	public static final String CONTEXT = "@context";
+	public static final String BASE = "@base";
+	private static final JsonParser parser = new JsonParser();
+
+	public static JsonElement parse(String contents) {
+		return parser.parse(contents);
+	}
 
 }

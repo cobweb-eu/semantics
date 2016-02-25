@@ -15,7 +15,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.7.jar"/>
-	<classpathentry kind="lib" path="lib/ehcache-3.0.0.m4.jar"/>
+	<classpathentry kind="lib" path="lib/ehcache-3.0.0.m4.jar" sourcepath="lib/ehcache3-3.0.0.m4.zip"/>
 	<classpathentry kind="lib" path="lib/offheap-store-2.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-jdk14-1.7.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

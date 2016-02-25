@@ -5,9 +5,9 @@ import ie.ucd.cobweb.semantic.jsonld.JSON;
 import com.google.gson.JsonObject;
 
 public class ValueConstant {
-	final String type;
-	final String key;
-	final String val;
+	public final String type;
+	public final String key;
+	public final String val;
 
 	public static final String KEY = "http://prophet.ucd.ie/ontology/cobweb/map#key";
 	public static final String VAL = "http://prophet.ucd.ie/ontology/cobweb/map#value";

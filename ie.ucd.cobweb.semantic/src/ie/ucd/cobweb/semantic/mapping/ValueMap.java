@@ -1,6 +1,6 @@
 package ie.ucd.cobweb.semantic.mapping;
 
-import ie.ucd.cobweb.semantic.SurveyData.Property;
+import ie.ucd.cobweb.semantic.DataPoint;
 import ie.ucd.cobweb.semantic.jsonld.JSON;
 import ie.ucd.cobweb.semantic.mapping.ExportType.Exporter;
 
@@ -48,7 +48,8 @@ public class ValueMap {
 		return new ValueMap(id, to, filter, result);
 	}
 
-	public void export(Property prop, Exporter ex) {
+	public void export(DataPoint.Property prop,
+			Exporter ex) {
 		String value = prop.value;
 		if( value.equals(filter)) 
 			value = result;
