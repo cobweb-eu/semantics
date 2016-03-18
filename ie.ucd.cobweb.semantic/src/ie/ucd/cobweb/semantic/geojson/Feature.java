@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class Feature {
-	//XXX Geometry support.
+	// XXX Geometry support.
 
 	private JsonObject root;
 
@@ -23,6 +23,11 @@ public class Feature {
 
 	public JsonObject getProperties() {
 		return root.getAsJsonObject(GeoJSON.PROPERTIES);
+	}
+
+	public void setProperties(JsonObject props) {
+		root.remove(GeoJSON.PROPERTIES);
+		root.add(GeoJSON.PROPERTIES, props);
 	}
 
 }

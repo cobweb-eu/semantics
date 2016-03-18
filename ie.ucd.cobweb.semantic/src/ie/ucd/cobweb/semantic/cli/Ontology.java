@@ -85,12 +85,6 @@ public class Ontology implements Serializable {
 					if (type != null && conf != null)
 						type.setConfig(conf);
 				}
-				// TODO Also redo.
-				key = JSON.extractArrayElement(Configuration.TEMPLATE_COLLECTION,
-						JSON.VALUE, spec);
-				if (key != null) {
-					//TODO Extract supercollection identifier.
-				}
 
 				key = JSON.extractArrayElement(ValueConstant.KEY, JSON.VALUE,
 						spec);
@@ -135,12 +129,11 @@ public class Ontology implements Serializable {
 
 	public void export(DataPoint point, FileCache cache) {
 		for (ExportType type : exports.values()) {
-			System.out.println("  Exporting " + type.name);
+			//System.out.println("  Exporting " + type.name);
 
 			Exporter ex = type.new Exporter();
 			for (DataPoint.Property prop : point.properties()) {
-				System.out.println("    Property " + prop.type);
-				// System.out.println(" & " + prop.value);
+				//System.out.println("    Property " + prop.type);
 				ValueConfig conf = values.get(prop.type);
 				if (conf != null && conf.mappings != null) {
 					type.export(prop, conf.mappings, ex);
@@ -150,7 +143,10 @@ public class Ontology implements Serializable {
 			Geometry g = point.getGeometry();
 			g.export(ex);
 
+			//Return and store export record -> incl editor id and collection template.
 			ex.export(type.extension, type.getConf().template, cache);
 		}
+		
+		//Export all matching records into matching collection.
 	}
 }

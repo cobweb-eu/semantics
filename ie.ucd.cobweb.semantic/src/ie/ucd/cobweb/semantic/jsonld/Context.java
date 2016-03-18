@@ -63,6 +63,11 @@ public class Context {
 	}
 
 	private static String lookupBase(String fingerprint) {
+		switch (fingerprint) {
+		case "f29+l/pBu465pRVj+s3jxQ==":
+			return "http://prophet.ucd.ie/ontology/cobweb/surveys/default/knotweed1#";
+		}
+		// return "http://prophet.ucd.ie/ontology/cobweb/surveys/default";
 		return null;
 	}
 

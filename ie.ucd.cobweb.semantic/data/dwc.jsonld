@@ -164,6 +164,12 @@
             "@value": "http://prophet.ucd.ie/ontology/cobweb/mapping/darwincore.ftl"
           }
         ],
+        "http://prophet.ucd.ie/ontology/cobweb/map#templateCollection": [
+          {
+            "@type": "http://www.w3.org/2001/XMLSchema#anyURI",
+            "@value": "http://prophet.ucd.ie/ontology/cobweb/mapping/darwincore_collection.ftl"
+          }
+        ],
         "http://prophet.ucd.ie/ontology/cobweb/map#type": [
           {
             "@value": "darwincore"

@@ -168,12 +168,16 @@ public class FileCache {
 		return o;
 	}
 
-	public Template getTemplate(String template, Configuration cfg) throws IOException {
+	public Template getTemplate(String template, Configuration cfg)
+			throws IOException {
 		Template temp = templates.get(template);
 		if (temp == null) {
-			String content = getDocument(template);
-			StringReader reader = new StringReader(content);
-			temp = new Template(template, reader, cfg);
+			temp = cfg.getTemplate(template);
+			if (temp == null) {
+				String content = getDocument(template);
+				StringReader reader = new StringReader(content);
+				temp = new Template(template, reader, cfg);
+			}
 			templates.put(template, temp);
 		}
 		return temp;

@@ -31,8 +31,10 @@ public class DataPoint {
 				.get(GeoJSON.ID).getAsString();
 		String editor = feature.getMember(GeoJSON.PROPERTIES).getAsJsonObject()
 				.get(FieldtripOpen.ID).getAsString();
+		String timestamp = feature.getMember(GeoJSON.PROPERTIES)
+				.getAsJsonObject().get(FieldtripOpen.TIMESTAMP).getAsString();
 
-		DataPoint point = new DataPoint(name, id, editor);
+		DataPoint point = new DataPoint(name, id, editor, timestamp);
 
 		loadProperties(feature, point);
 		loadFields(feature, point);
@@ -83,7 +85,7 @@ public class DataPoint {
 			if (!v.isJsonPrimitive())
 				continue;
 
-			point.properties.put(key, point.new Property(key, v.toString()));
+			point.properties.put(key, point.new Property(key, v.getAsString()));
 		}
 
 		geometry = new Geometry(feature.getMember(GeoJSON.GEOMETRY)
@@ -110,13 +112,15 @@ public class DataPoint {
 	public final String name;
 	public final String id;
 	public final String editor;
+	public final String timestamp;
 	private String fingerprint;
 	private HashMap<String, Property> properties;
 
-	private DataPoint(String name, String id, String editor) {
+	private DataPoint(String name, String id, String editor, String timestamp) {
 		this.name = name;
 		this.id = id;
 		this.editor = editor;
+		this.timestamp = timestamp;
 
 		this.properties = new HashMap<>();
 	}
@@ -126,7 +130,8 @@ public class DataPoint {
 	}
 
 	public static DataPoint convert(DataPoint origin, Context context) {
-		DataPoint conv = new DataPoint(origin.name, origin.id, origin.editor);
+		DataPoint conv = new DataPoint(origin.name, origin.id, origin.editor,
+				origin.timestamp);
 		for (Property p : origin.properties.values()) {
 			String key = context.getType(p.type);
 			Property prop = conv.new Property(key, p.value);
