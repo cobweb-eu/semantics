@@ -83,11 +83,11 @@ public class Main {
 
 		// process(file);
 		// f29+l/pBu465pRVj+s3jxQ==
-		process("data/75802b0b-452b-4ff6-bb1c-1856b2582f89.txt");
+		//process("data/75802b0b-452b-4ff6-bb1c-1856b2582f89.txt");
 		// //f29+l/pBu465pRVj+s3jxQ==
 		// process("data/11b4c5da-1464-4e47-ab1f-dc3563ec9ef2.txt");
 		// //yfCGb1RhGHMiOBTd9gXNJQ==
-		// process("data/b1b28830-9443-46b1-82f7-3d772f30cdbb.txt");
+		process("data/b1b28830-9443-46b1-82f7-3d772f30cdbb.txt");
 		// //tBHgX4/0oqUYffPuR88Peg== uDDYxd9NwxoInSfyzTXF3g==
 		// process("data/c5493108-d140-43a3-82c9-7ef80730b788.txt");
 		// //OHEbsgTBR3TRyizxsIekNQ== o3J5K+BUNax6WIEDGopRsA==
@@ -135,10 +135,6 @@ public class Main {
 
 			Context context = Context.extract(feature, cache,
 					point.getFingerprint());
-			if (context == null) {
-				throw new IOException("No context configured for response id '"
-						+ point.getFingerprint() + "'");
-			}
 
 			switch (mode) {
 			case SIMPLIFY:

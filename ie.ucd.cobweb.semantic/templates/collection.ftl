@@ -17,13 +17,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
         xsi:schemaLocation="data/citizenScience.xsd" 
         gml:id="${ID}">
-
   <cs:resultTime>
     <gml:TimeInstant gml:id="day1">
       <gml:timePosition>${time}</gml:timePosition>
     </gml:TimeInstant>
   </cs:resultTime>
-  
   <cs:metadata>
     <#--#list meta as campaign-->
     <cs:CitizenScienceMetadata gml:id="${meta.ID}">
@@ -52,6 +50,7 @@
   </cs:procedure>
   
   <cs:observedProperty xlink:href="${observedProperty}" />
+  <#if exporter?size = 1>
   <cs:result>
     <swe:DataArray>
       <swe:elementCount>
@@ -59,8 +58,9 @@
           <swe:value>${exporter?size}</swe:value>
         </swe:Count>
       </swe:elementCount>
+      <#assign counter = 1>
       <#list exporter as exporter>
-      <swe:elementType name="resultRecordStructure">
+      <swe:elementType name="resultRecordStructure${counter}"><#assign counter = counter+1>
         <swe:DataRecord id="${exporter.ID}">
           <#list exporter.results as field>
           <swe:field name="${field.name}">
@@ -77,6 +77,7 @@
       </#list>
     </swe:DataArray>
   </cs:result>
+  </#if>
   <cs:featureOfInterest xlink:href="${featureOfInterest}"/>
   <#list results as item>
   <cs:member>
@@ -100,13 +101,27 @@
           </sams:shape>
         </sams:SF_SpatialSamplingFeature>
       </om:featureOfInterest>
+      <#if exporter?size = 1>
       <om:result xsi:type="swe:DataArrayPropertyType">
         <swe:DataArray>
           <swe:elementCount/>
           <swe:elementType name="resultType" xlink:href="${item.results.ID}"/>
-          <swe:values><#list item.results.value as value>${value?html}<#sep>${item.results.seperator}</#list></swe:values>
+          <swe:values><#list item.resultsE.value as value>${value?html}<#sep>${item.results.seperator}</#list></swe:values>
         </swe:DataArray>
       </om:result>
+      <#else>
+      <om:result>
+        <swe:DataRecord>
+          <#list item.results as result>
+          <swe:field name="${result.name}">
+            <swe:${result.type} definition="${result.definition}">
+              <swe:value>${result.value?html}</swe:value>
+            </swe:${result.type}>
+          </swe:field>
+          </#list>
+        </swe:DataRecord>   
+      </om:result>       
+      </#if>
     </cs:CitizenScienceObservation>
   </cs:member>
   <#--break><#-- -->

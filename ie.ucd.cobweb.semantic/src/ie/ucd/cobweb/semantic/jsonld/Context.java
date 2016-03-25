@@ -66,9 +66,14 @@ public class Context {
 		switch (fingerprint) {
 		case "f29+l/pBu465pRVj+s3jxQ==":
 			return "http://prophet.ucd.ie/ontology/cobweb/surveys/default/knotweed1#";
+		case "tBHgX4/0oqUYffPuR88Peg==":
+			return "http://prophet.ucd.ie/ontology/cobweb/surveys/default/knotweed2_1#";
+		case "uDDYxd9NwxoInSfyzTXF3g==":
+			return "http://prophet.ucd.ie/ontology/cobweb/surveys/default/knotweed2_2#";
+		default:
+			throw new IllegalStateException(String.format(
+					"No context configured for response id '%s'", fingerprint));
 		}
-		// return "http://prophet.ucd.ie/ontology/cobweb/surveys/default";
-		return null;
 	}
 
 	public static String extractBase(JsonArray context) {

@@ -68,11 +68,9 @@ public class SWEObservation {
 		map.put(SWE4CS.OBSPROP, observedProperty);
 		map.put(SWE4CS.FOI, foi.collapse());
 
-		if (single)
-			map.put(SWE4CS.RESULT, data.collapse());
-		else {
-			map.put(SWE4CS.RESULT, data.encode());
-			// map.put(SWE4CS.ENCODER, data.encoder());
+		map.put(SWE4CS.RESULT, data.collapse());
+		if (!single) {
+			map.put(SWE4CS.RESULT_ENC, data.encode());
 		}
 
 		return map;

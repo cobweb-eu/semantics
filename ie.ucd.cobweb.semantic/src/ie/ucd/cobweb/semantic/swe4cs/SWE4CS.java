@@ -33,6 +33,7 @@ public class SWE4CS {
 	public static final String OBSPROP = "observedProperty";
 	public static final String FOI = "featureOfInterest";
 	public static final String RESULT = "results";
+	public static final String RESULT_ENC = "resultE";
 	public static final String ENCODER = "exporter";
 	public static final String PROCESS = "process";
 	public static final String PROTOCOL = "protocol";

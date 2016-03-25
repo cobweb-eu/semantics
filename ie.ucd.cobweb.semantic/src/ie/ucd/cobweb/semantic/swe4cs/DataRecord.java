@@ -140,6 +140,10 @@ public class DataRecord {
 		return map;
 	}
 
+	public Map<String, Object> encode() {
+		return encoder.encode(this);
+	}
+
 	// ----RecordStructure - id
 	// -----Name
 	// -----Definition
@@ -158,10 +162,6 @@ public class DataRecord {
 		if (idx > 0)
 			return type.substring(idx + 1);
 		return null;
-	}
-
-	public Map<String, Object> encode() {
-		return encoder.encode(this);
 	}
 
 	public void collapseEncoder(Map<String, Object> map) {

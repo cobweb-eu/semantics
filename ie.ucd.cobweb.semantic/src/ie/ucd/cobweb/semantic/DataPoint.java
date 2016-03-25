@@ -138,6 +138,7 @@ public class DataPoint {
 
 			conv.properties.put(key, prop);
 		}
+		conv.fingerprint = origin.fingerprint;
 		return conv;
 	}
 
