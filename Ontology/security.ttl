@@ -10,9 +10,6 @@
 <http://prophet.ucd.ie/ontology/cobweb/security>
       rdf:type owl:Ontology .
 
-:     rdf:type owl:Ontology ;
-      owl:versionInfo "Created with TopBraid Composer"^^xsd:string .
-
 :MappedSecurityProfile
       rdf:type rdfs:Class ;
       rdfs:subClassOf :SecurityProfile .

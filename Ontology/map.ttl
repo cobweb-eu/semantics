@@ -48,8 +48,14 @@
 
 :type
       rdf:type rdf:Property ;
+      rdfs:comment "Use Configuration to cluster the Mapping instances."^^xsd:string ;
       rdfs:domain :Configuration ;
-      rdfs:range xsd:string .
+      rdfs:range xsd:string ;
+      owl:deprecated "true"^^xsd:boolean .
+
+:usesMappingConfiguration
+      rdf:type rdf:Property ;
+      rdfs:range :Configuration .
 
 :value
       rdf:type rdf:Property ;

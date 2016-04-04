@@ -20,27 +20,28 @@
 :AssociatedMedia
       rdf:type map:Mapping ;
       map:mapType "darwincore"^^xsd:string ;
-      map:mapsToElement "dwc:associatedMedia"^^xsd:string .
+      map:mapsToElement "dwc_associatedMedia"^^xsd:string .
 
 :AssociatedMediaName
       rdf:type map:Mapping ;
       map:mapType "darwincore"^^xsd:string ;
-      map:mapsToElement "dwc:associatedMediaName"^^xsd:string .
+      map:mapsToElement "dwc_associatedMediaName"^^xsd:string .
 
 :Coordinates
       rdf:type map:Mapping ;
-      map:mapType "darwincore"^^xsd:string .
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "dwc_coordinates"^^xsd:string .
 
-:DarwinCore
+:DarwinCoreConfig
       rdf:type map:Configuration ;
-      map:mappings :Family , :DatasetID , :Habitat , :Coordinates , :Kingdom , :ScientificName , :VernacularName , :ScientificNameID , :AssociatedMedia , :Timestamp ;
+      map:mappings :Habitat , :VernacularName , :Timestamp , :AssociatedMedia , :DatasetID , :Coordinates , :Family , :ScientificNameID , :Kingdom , :ScientificName ;
       map:templateFile "http://prophet.ucd.ie/ontology/cobweb/mapping/darwincore.ftl"^^xsd:anyURI ;
       map:type "darwincore"^^xsd:string .
 
 :DatasetID
       rdf:type map:Mapping ;
       map:mapType "darwincore"^^xsd:string ;
-      map:mapsToElement "dwc:datasetID"^^xsd:string .
+      map:mapsToElement "dwc_datasetID"^^xsd:string .
 
 :ExampleConstant
       rdf:type map:Constant ;
@@ -51,24 +52,27 @@
       rdf:type map:ValueMap ;
       map:forValue "Japanese Knotweed"^^xsd:string ;
       map:mapType "darwincore"^^xsd:string ;
-      map:mapsToElement "dwc:family"^^xsd:string .
+      map:mapsToElement "dwc_family"^^xsd:string .
 
 :Habitat
       rdf:type map:Mapping ;
       map:mapType "darwincore"^^xsd:string ;
-      map:mapsToElement "dwc:Habitat"^^xsd:string .
+      map:mapsToElement "dwc_Habitat"^^xsd:string .
 
 :Kingdom
       rdf:type map:ValueMap ;
-      map:mapType "darwincore"^^xsd:string .
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "dwc_Kingdom"^^xsd:string .
 
 :ScientificName
       rdf:type map:ValueMap ;
-      map:mapType "darwincore"^^xsd:string .
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "dwc_ScientificName"^^xsd:string .
 
 :ScientificNameID
       rdf:type map:ValueMap ;
-      map:mapType "darwincore"^^xsd:string .
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "dwc_ScientificNameID"^^xsd:string .
 
 :Timestamp
       rdf:type map:Mapping ;
@@ -77,7 +81,8 @@
 
 :VernacularName
       rdf:type map:ValueMap ;
-      map:mapType "darwincore"^^xsd:string .
+      map:mapType "darwincore"^^xsd:string ;
+      map:mapsToElement "dwc_VernacularName"^^xsd:string .
 
 map:mapsToElement
       rdfs:domain map:Mapping ;

@@ -13,7 +13,7 @@
 @prefix survey:  <http://prophet.ucd.ie/ontology/cobweb/survey#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
-dwc:DarwinCore
+dwc:DarwinCoreConfig
       map:mappings :Mapping_1 .
 
 map:Constant
@@ -35,11 +35,12 @@ map:mapType
 <http://prophet.ucd.ie/ontology/cobweb/properties#timestamp>
       rdf:type survey:Question ;
       map:hasMapping dwc:Timestamp ;
-      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> ;
-      survey:hasMapping dwc:Timestamp .
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> .
 
 <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1>
       rdf:type survey:Survey , owl:Ontology ;
+      map:usesMappingConfiguration
+              dwc:DarwinCoreConfig ;
       survey:hasQualityProfile
               "file://example_quality_document.xpdl"^^xsd:anyURI ;
       survey:hasQuestion :fieldcontain-select-2 , :fieldcontain-radio-1 , <http://prophet.ucd.ie/ontology/cobweb/properties#timestamp> , <http://prophet.ucd.ie/ontology/cobweb/properties#name> , :fieldcontain-image-1 , :fieldcontain-select-1 , :fieldcontain-radio-2 ;
@@ -66,21 +67,23 @@ map:mapType
 :fieldcontain-image-1
       rdf:type survey:Question ;
       map:hasMapping dwc:AssociatedMedia , :Mapping_1 ;
-      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> ;
-      survey:hasMapping :Mapping_1 , dwc:AssociatedMedia .
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> .
 
 :fieldcontain-radio-1
       rdf:type survey:Question ;
       map:hasMapping dwc:Family , dwc:ScientificNameID , dwc:Kingdom , dwc:ScientificName , dwc:VernacularName ;
       ssp:hasSecurityProfile
               :NonSensitiveSpecies , :SensitiveSpecies ;
-      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> ;
-      survey:hasMapping dwc:ScientificName , dwc:Family , dwc:ScientificNameID , dwc:Kingdom , dwc:VernacularName ;
-      survey:hasSecurityProfile
-              :SensitiveSpecies , :NonSensitiveSpecies .
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> .
 
 :fieldcontain-radio-2
       rdf:type survey:Question ;
+      ssp:hasSecurityProfile
+              [ rdf:type ssp:MappedSecurityProfile ;
+                ssp:forValue "ArbitraryValue"^^xsd:string ;
+                ssp:hasProfile ssp:Private ;
+                ssp:hasScope ssp:Survey
+              ] ;
       survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> .
 
 :fieldcontain-select-1
@@ -90,8 +93,7 @@ map:mapType
 :fieldcontain-select-2
       rdf:type survey:Question ;
       map:hasMapping dwc:Habitat ;
-      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> ;
-      survey:hasMapping dwc:Habitat .
+      survey:appliesTo <http://prophet.ucd.ie/ontology/cobweb/surveys/japaneseknotweed1> .
 
 :urlprefix
       rdf:type map:Constant ;
